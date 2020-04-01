@@ -205,7 +205,7 @@
 		rockchip,pwm_id= <2>;
 		rockchip,pwm_voltage = <900000>;
 	};
-/*
+
 	vcc3v3_pcie: vcc3v3-pcie-regulator {
 		compatible = "regulator-fixed";
 		enable-active-high;
@@ -227,7 +227,7 @@
 		regulator-always-on;
 		regulator-boot-on;
 	};
-*/
+
 };
 
 &cdn_dp {
@@ -297,8 +297,8 @@
 
 &i2c0 {
 	status = "okay";
-	i2c-scl-rising-time-ns = <220>;//<168>;
-	i2c-scl-falling-time-ns = <10>;//<4>;
+	i2c-scl-rising-time-ns = <168>;
+	i2c-scl-falling-time-ns = <4>;
 	clock-frequency = <400000>;
 
 	vdd_cpu_b: syr827@40 {
@@ -309,9 +309,9 @@
 		regulator-name = "vdd_cpu_b";
 		pinctrl-0 = <&vsel1_gpio>;
 		vsel-gpios = <&gpio1 18 GPIO_ACTIVE_HIGH>;
-		regulator-min-microvolt = <950000>;//<712500>;
+		regulator-min-microvolt = <712500>;
 		regulator-max-microvolt = <1500000>;
-		regulator-ramp-delay = <1>;//<1000>;
+		regulator-ramp-delay = <1000>;
 		fcs,suspend-voltage-selector = <1>;
 		regulator-always-on;
 		regulator-boot-on;
@@ -329,9 +329,9 @@
 		regulator-name = "vdd_gpu";
 		pinctrl-0 = <&vsel2_gpio>; 
 		vsel-gpios = <&gpio1 14 0>;
-		regulator-min-microvolt = <950000>;//<712500>;
+		regulator-min-microvolt = <712500>;
 		regulator-max-microvolt = <1500000>;
-		regulator-ramp-delay = <1>;//<1000>;
+		regulator-ramp-delay = <1000>;
 		fcs,suspend-voltage-selector = <1>;
 		regulator-always-on;
 		regulator-boot-on;
@@ -350,8 +350,8 @@
 		pmic,hold-gpio = <&gpio1 13 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default";
 		//pinctrl-0 = <&pmic_int_l &pmic_dvs2 &pmic_stby &pmic_hold>;
-		//pinctrl-0 = <&pmic_int_l &pmic_dvs2 &pmic_hold>;
-		pinctrl-0 = <&pmic_int_l &pmic_hold>;
+		pinctrl-0 = <&pmic_int_l &pmic_dvs2 &pmic_hold>;
+		//pinctrl-0 = <&pmic_int_l &pmic_hold>;
 		rockchip,system-power-controller;
 		wakeup-source;
 		#clock-cells = <1>;
@@ -544,7 +544,7 @@
 		pinctrl-0 = <&fusb0_int>;
 		int-n-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
 		vbus-5v-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-		status = "disabled";
+		status = "okay";
 	};
 };
 
@@ -574,12 +574,12 @@
 };
 
 &io_domains {
-	status = "disabled";
+	status = "okay";
 
 	//bt656-supply = <&vcc1v8_dvp>;		/* bt656_gpio2ab_ms */
 	//audio-supply = <&vcca1v8_codec>;	/* audio_gpio3d4a_ms */
 	sdmmc-supply = <&vccio_sd>;		/* sdmmc_gpio4b_ms */
-//	gpio1830-supply = <&vcc_3v0>;		/* gpio1833_gpio4cd_ms */
+	gpio1830-supply = <&vcc_3v0>;		/* gpio1833_gpio4cd_ms */
 };
 
 &pcie_phy {
@@ -679,11 +679,11 @@
 	rockchip,hw-tshut-mode = <1>;
 	/* tshut polarity 0:LOW 1:HIGH */
 	rockchip,hw-tshut-polarity = <1>;
-	status = "disabled";
+	status = "okay";
 };
 
 &u2phy0 {
-	status = "disabled";
+	status = "okay";
 	extcon = <&fusb0>;
 
 	u2phy0_otg: otg-port {
@@ -714,7 +714,7 @@
 };
 
 &usbdrd3_0 {
-	status = "disabled";
+	status = "okay";
 	extcon = <&fusb0>;
 };
 
@@ -723,7 +723,7 @@
 };
 
 &usbdrd_dwc3_0 {
-	status = "disabled";
+	status = "okay";
 	dr_mode = "otg";
 };
 
@@ -732,11 +732,11 @@
 };
 
 &usb_host0_ehci {
-	status = "disabled";
+	status = "okay";
 };
 
 &usb_host0_ohci {
-	status = "disabled";
+	status = "okay";
 };
 
 &usb_host1_ehci {

@@ -65,8 +65,9 @@
 		regulator-max-microvolt = <1800000>;
 	};
 	
-/*	
+	
 	rt5640-sound {
+		status = "disabled";
 		compatible = "simple-audio-card";
 		simple-audio-card,format = "i2s";
 		simple-audio-card,name = "rockchip,rt5640-codec";
@@ -105,9 +106,9 @@
 		compatible = "linux,spdif-dit";
 		#sound-dai-cells = <0>;
 	};
-*/
 
-/*
+
+
 	sdio_pwrseq: sdio-pwrseq {
 		compatible = "mmc-pwrseq-simple";
 		clocks = <&rk808 1>;
@@ -123,7 +124,7 @@
 		 //
 		reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>; // GPIO0_B2 
 	};
-*/
+
 	gpio-keys {
 		compatible = "gpio-keys";
 		#address-cells = <1>;
@@ -169,7 +170,7 @@
 			default-state = "on";
 		};
 	};
-/*	
+	
 	wireless-wlan {
 		compatible = "wlan-platdata";
 		rockchip,grf = <&grf>;
@@ -196,9 +197,9 @@
 		BT,wake_host_irq = <&gpio0 4 GPIO_ACTIVE_HIGH>; // GPIO0_A4 
 		status = "disabled";
 	};
-*/	
+	
 	/* GPIO1_C7 controls both VCC18_MIPI and VCC28_MIPI, also AF28 */
-/*
+
 	vcc_mipi: vcc_mipi {
 		compatible = "regulator-fixed";
 		enable-active-high;
@@ -225,7 +226,7 @@
 		rockchip,cpu = <&spdif>;
 		rockchip,codec = <&cdn_dp 1>;
 	};
- */
+ 
 };
 
 &dfi {
@@ -274,7 +275,7 @@
 	status = "disabled";
 	i2c-scl-rising-time-ns = <300>;
 	i2c-scl-falling-time-ns = <15>;
-/*
+
 	
 	rt5640: rt5640@1c {
 		#sound-dai-cells = <0>;
@@ -290,8 +291,8 @@
 		io-channels = <&saradc 4>;
 		hp-det-adc-value = <500>;
 	};
-*/	
-/*
+	
+
 	ov13850: ov13850@36 {
 		compatible = "ovti,ov13850";
 		status = "disabled";
@@ -347,7 +348,7 @@
 			};
 		};
 	};
-*/
+
 
 };
 
@@ -455,7 +456,7 @@
 	};
 };
 
- &spi2 {
+&spi2 {
           status = "okay";
           SPIDEV_POWER: SPIDEV {
                 status = "okay";
@@ -534,7 +535,7 @@
 			rockchip,pins = <2 4 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
-/*
+
 	rt5640 {
 		rt5640_hpcon: rt5640-hpcon {
 			rockchip,pins = <4 21 RK_FUNC_GPIO &pcfg_pull_none>;
@@ -559,7 +560,7 @@
                         rockchip,pins = <1 1 RK_FUNC_GPIO &pcfg_pull_down>;
                 };
         };
-*/
+
 
 };
 
@@ -590,7 +591,7 @@
 	
 			mipi_in_ucam0: endpoint@1 {
 				reg = <1>;
-	//			remote-endpoint = <&ucam_out0>;
+				remote-endpoint = <&ucam_out0>;
 				data-lanes = <1 2>;
 			};
 		
@@ -641,7 +642,7 @@
 
 			mipi_in_ucam1: endpoint@1 {
 				reg = <1>;
-		//		remote-endpoint = <&ucam_out1>;
+				remote-endpoint = <&ucam_out1>;
 				data-lanes = <1 2>;
 			};
 		

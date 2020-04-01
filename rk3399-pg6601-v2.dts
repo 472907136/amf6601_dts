@@ -164,8 +164,8 @@
 };
 
 &i2c4 {
-	status = "disabled";
-/*
+	status = "okay";
+
 	gsl3680: gsl3680@40 {
 		compatible = "gslX680";
 		reg = <0x40>;
@@ -173,8 +173,9 @@
 		screen_max_y = <2048>;
 		touch-gpio = <&gpio4 28 IRQ_TYPE_LEVEL_LOW>;
 		reset-gpio = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+		//status = "disabled";
 	};
-*/
+
 	mpu6050: mpu@68 {
 		compatible = "invensense,mpu6050";
 		reg = <0x68>;
@@ -186,6 +187,7 @@
 		orientation-x= <1>;
 		orientation-y= <1>;
 		orientation-z= <1>;
+		//status = "disabled";
 	};
 };
 
