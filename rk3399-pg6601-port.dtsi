@@ -152,7 +152,7 @@
 	leds {
 		compatible = "gpio-leds";
 
-		work {
+/*		work {
 			label = "firefly:blue:power";
 			linux,default-trigger = "ir-power-click";
 			gpios = <&gpio2 5 GPIO_ACTIVE_HIGH>;
@@ -169,6 +169,7 @@
 			pinctrl-0 = <&led_user>;
 			default-state = "on";
 		};
+*/
 	};
 	
 	wireless-wlan {
