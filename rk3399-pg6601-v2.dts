@@ -42,6 +42,7 @@
 
 /dts-v1/;
 
+//#include "rk3399-firefly-port.dtsi"
 #include "rk3399-pg6601-port.dtsi"
 #include <dt-bindings/display/media-bus-format.h>
 
@@ -67,7 +68,7 @@
 
 &backlight {
 	pwms = <&pwm1 0 25000 0>;
-    	status = "okay";
+    status = "okay";
 };
 
 &dsi {
@@ -150,6 +151,28 @@
 	};
 };
 
+&dsi1 {
+	status = "okay";
+	dsi_panel1: panel1 {
+		compatible ="simple-panel-dsi";
+		reg = <0>;
+		backlight = <&backlight>;
+		power-supply = <&vcc_lcd>;
+		dsi,flags = <(MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST)>;
+		dsi,format = <MIPI_DSI_FMT_RGB888>;
+		bus-format = <MEDIA_BUS_FMT_RGB888_1X24>;//<MEDIA_BUS_FMT_RGB666_1X18>;
+		dsi,lanes = <4>;
+		reset-delay-ms = <20>;
+		init-delay-ms = <20>;
+		enable-delay-ms = <120>;
+		prepare-delay-ms = <120>;
+		status = "okay";
+	};
+};
+
+//&route_dsi1 {
+ //       status = "disabled";
+   //     logo,mode = "center";
 &route_dsi{
 	status = "disabled";
 	logo,mode = "center";
@@ -159,8 +182,37 @@
 	status = "okay";
 };
 
+
+//&dsi_in_vopb {
+//	status = "disabled";
+//};
+
+//&dsi1_in_vopl {
+//	status = "disable";
+//};
+
+&dsi1_in_vopb {
+	status = "okay";
+};
+
+&vopb_out_dsi1 {
+	status = "okay";
+};
+
+
+//&vopl_out_dsi1 {
+//	status = "disabled";
+//};
+//&vopb_out_dsi {
+//	status = "disabled";
+//};
+&vopl_out_dsi {
+	status = "okay";
+};
+
+
 &hdmi_dp_sound {
-	status = "disabled";
+	status = "okay";
 };
 
 &i2c4 {
@@ -173,7 +225,6 @@
 		screen_max_y = <2048>;
 		touch-gpio = <&gpio4 28 IRQ_TYPE_LEVEL_LOW>;
 		reset-gpio = <&gpio0 12 GPIO_ACTIVE_HIGH>;
-		//status = "disabled";
 	};
 
 	mpu6050: mpu@68 {
@@ -187,7 +238,6 @@
 		orientation-x= <1>;
 		orientation-y= <1>;
 		orientation-z= <1>;
-		//status = "disabled";
 	};
 };
 

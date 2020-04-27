@@ -142,6 +142,16 @@
 			charge_logo,mode = "center";
 			connect = <&vopb_out_dsi>;
 		};
+/*add route-dsi1*/
+/*		route_dsi1: route-dsi1 {
+                        status = "disabled";
+                        logo,uboot = "logo.bmp";
+                        logo,kernel = "logo_kernel.bmp";
+                        logo,mode = "center";
+                        charge_logo,mode = "center";
+                        connect = <&vopl_out_dsi>;
+                };
+*/
 
 		route_hdmi: route-hdmi {
                         status = "disabled";
