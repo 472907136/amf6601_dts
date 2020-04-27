@@ -42,7 +42,6 @@
 
 /dts-v1/;
 
-//#include "rk3399-firefly-port.dtsi"
 #include "rk3399-pg6601-port.dtsi"
 #include <dt-bindings/display/media-bus-format.h>
 
@@ -68,7 +67,7 @@
 
 &backlight {
 	pwms = <&pwm1 0 25000 0>;
-    status = "okay";
+    	status = "okay";
 };
 
 &dsi {
@@ -87,67 +86,6 @@
 		enable-delay-ms = <120>;
 		prepare-delay-ms = <120>;
 		status = "okay";
-			
-/*   		panel-init-sequence = [
-                        05 20 01 29
-                        05 96 01 11
-                ];
-
-                panel-exit-sequence = [
-                        05 05 01 28
-                        05 78 01 10
-                ];
-
-		disp_timings: display-timings {
-                        native-mode = <&timing0>;
-
-                        timing0: timing0 {
-                                clock-frequency = <128000000>;
-                                hactive = <1080>;
-                                vactive = <2280>;
-                                hsync-len = <6>;
-                                hback-porch = <18>;
-                                hfront-porch = <16>;
-                                vsync-len = <10>;
-                                vback-porch = <4>;
-                                vfront-porch = <4>;
-                                hsync-active = <0>;
-                                vsync-active = <0>;
-                                de-active = <0>;
-                                pixelclk-active = <0>;
-                        };
-                };
-*/
-/*
-		panel-init-sequence = [
-			05 20 01 29
-			05 96 01 11
-		];
-
-		panel-exit-sequence = [
-			05 05 01 28
-			05 78 01 10
-		];
-
-		disp_timings: display-timings {
-			native-mode = <&timing0>;
-
-			timing0: timing0 {
-				clock-frequency = <80000000>;
-				hactive = <768>;
-				vactive = <1024>;
-				hsync-len = <20>;
-				hback-porch = <110>;
-				hfront-porch = <170>;
-				vsync-len = <40>;
-				vback-porch = <130>;
-				vfront-porch = <136>;
-				hsync-active = <0>;
-				vsync-active = <0>;
-				de-active = <0>;
-				pixelclk-active = <0>;
-			};
-		};*/
 	};
 };
 
@@ -170,9 +108,6 @@
 	};
 };
 
-//&route_dsi1 {
- //       status = "disabled";
-   //     logo,mode = "center";
 &route_dsi{
 	status = "disabled";
 	logo,mode = "center";
@@ -181,31 +116,14 @@
 &dsi_in_vopl {
 	status = "okay";
 };
-
-
-//&dsi_in_vopb {
-//	status = "disabled";
-//};
-
-//&dsi1_in_vopl {
-//	status = "disable";
-//};
-
 &dsi1_in_vopb {
-	status = "okay";
+        status = "okay";
 };
+
 
 &vopb_out_dsi1 {
 	status = "okay";
 };
-
-
-//&vopl_out_dsi1 {
-//	status = "disabled";
-//};
-//&vopb_out_dsi {
-//	status = "disabled";
-//};
 &vopl_out_dsi {
 	status = "okay";
 };
