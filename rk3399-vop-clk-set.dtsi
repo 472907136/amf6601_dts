@@ -52,7 +52,6 @@
 		assigned-clocks = <&cru SCLK_EMMC>;
 		assigned-clock-parents = <&cru PLL_GPLL>;
 		assigned-clock-rates = <200000000>;
-		//assigned-clock-rates   = <25000000>;
 };
 
 &uart0 {
