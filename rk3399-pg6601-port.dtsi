@@ -170,6 +170,21 @@
 		};
 	
 	};
+	spi1-image {
+                #address-cells = <1>;
+                #size-cells = <1>;
+                compatible = "amf6601-spi-image-analog";
+		pinctrl-names = "default";
+		pinctrl-0 = <&gpio_spi1_mosi &gpio_spi1_miso &gpio_spi1_cs &gpio_spi1_clk &gpio_spi1_dcx>;
+
+		spi1-gpio-mosi = <&gpio1 8  GPIO_ACTIVE_HIGH>;
+		spi1-gpio-miso = <&gpio1 7  GPIO_ACTIVE_HIGH>;
+		spi1-gpio-clk =  <&gpio1 9  GPIO_ACTIVE_HIGH>;
+		spi1-gpio-cs =   <&gpio1 10 GPIO_ACTIVE_HIGH>;
+		spi1-gpio-dcx =  <&gpio2 6 GPIO_ACTIVE_HIGH>;	/* I2C7_WP_3V0 nouse */
+                status = "okay";
+        };
+
 /*	
 	wireless-wlan {
 		compatible = "wlan-platdata";
@@ -476,20 +491,20 @@
 	status = "disabled";
 	max-freq = <48000000>;
 
-	spi_wk2xxx: spi_wk2xxx@00{
-		status = "disabled";
-		compatible = "firefly,spi-wk2xxx";
-		reg = <0x00>;
-		spi-max-frequency = <10000000>;
-        power-gpio = <&gpio2 4 GPIO_ACTIVE_HIGH>;
+//	spi_wk2xxx: spi_wk2xxx@00{
+//		status = "disabled";
+//		compatible = "firefly,spi-wk2xxx";
+//		reg = <0x00>;
+//		spi-max-frequency = <10000000>;
+//        power-gpio = <&gpio2 4 GPIO_ACTIVE_HIGH>;
         //reset-gpio = <&gpio1 17 3 GPIO_ACTIVE_HIGH>;
-        irq-gpio = <&gpio1 2 IRQ_TYPE_EDGE_FALLING>;
-        cs-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+//        irq-gpio = <&gpio1 2 IRQ_TYPE_EDGE_FALLING>;
+//        cs-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
 		/* wk2xxx driver support SPI_CPOL | SPI_CPHA | SPI_CS_HIGH */
 		//spi-cpha;		/* SPI mode: CPHA=1 */
 		//spi-cpol;   	/* SPI mode: CPOL=1 */
 		//spi-cs-high;
-	};
+//	};
 };
 
 &vopb {
@@ -535,6 +550,25 @@
 		led_user: led-user {
 			rockchip,pins = <2 4 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
+	};
+/*Test node */
+	gpios-spi1 {
+		gpio_spi1_miso: gpio-spi1-miso {
+			rockchip,pins = <1 7 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+		gpio_spi1_mosi: gpio-spi1-mosi {
+                        rockchip,pins = <1 8 RK_FUNC_GPIO &pcfg_pull_none>;
+                };
+		gpio_spi1_clk: gpio-spi1-clk {
+                        rockchip,pins = <1 9 RK_FUNC_GPIO &pcfg_pull_none>;
+                };
+		gpio_spi1_cs: gpio-spi1-cs {
+			rockchip,pins = <1 10 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+		gpio_spi1_dcx: gpio-spi1-dcx {
+                        rockchip,pins = <2 6 RK_FUNC_GPIO &pcfg_pull_none>;
+                };
+
 	};
 /*
 	rt5640 {

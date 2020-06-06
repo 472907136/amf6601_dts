@@ -77,7 +77,8 @@
 		reg = <0>;
 		backlight = <&backlight>;
 		power-supply = <&vcc_lcd>;
-		dsi,flags = <(MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST)>;
+		//dsi,flags = <(MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST)>;
+		dsi,flags = <0>;
 		dsi,format = <MIPI_DSI_FMT_RGB888>;
 		bus-format = <MEDIA_BUS_FMT_RGB888_1X24>;/*<MEDIA_BUS_FMT_RGB666_1X18>;*/
 		dsi,lanes = <4>;
@@ -96,7 +97,8 @@
 		reg = <0>;
 		backlight = <&backlight>;
 		power-supply = <&vcc_lcd>;
-		dsi,flags = <(MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST)>;
+		//dsi,flags = <(MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST)>;
+		dsi,flags = <0>;
 		dsi,format = <MIPI_DSI_FMT_RGB888>;
 		bus-format = <MEDIA_BUS_FMT_RGB888_1X24>;//<MEDIA_BUS_FMT_RGB666_1X18>;
 		dsi,lanes = <4>;
@@ -113,7 +115,7 @@
 	logo,mode = "center";
 };
 
-&dsi_in_vopl {
+&dsi_in_vopb {
 	status = "okay";
 };
 &dsi1_in_vopb {
@@ -124,13 +126,14 @@
 &vopb_out_dsi1 {
 	status = "okay";
 };
-&vopl_out_dsi {
+&vopb_out_dsi {
 	status = "okay";
 };
 
 
 &hdmi_dp_sound {
-	status = "okay";
+	//status = "okay";
+	status = "disabled";
 };
 
 &i2c4 {
@@ -160,7 +163,7 @@
 };
 
 &uart4 {
-	status = "okay";
+	status = "disabled";
 };
 
 &dp_in_vopb {
@@ -168,8 +171,15 @@
 };
 
 &hdmi_in_vopb {
+	status = "disabled";
+};
+&hdmi_in_vopl {
 	status = "okay";
 };
+&vopl_out_hdmi {
+        status = "okay";
+};
+
 
 &wdt {
 	status = "disabled";

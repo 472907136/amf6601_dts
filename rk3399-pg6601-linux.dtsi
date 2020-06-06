@@ -159,7 +159,7 @@
                         logo,kernel = "logo_kernel.bmp";
                         logo,mode = "center";
                         charge_logo,mode = "center";
-                        connect = <&vopb_out_hdmi>;
+                        connect = <&vopl_out_hdmi>;
                 };
 
 
